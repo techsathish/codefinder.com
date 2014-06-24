@@ -1,0 +1,11 @@
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\CodeFinder.BAL.dll
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\CodeFinder.BAL.pdb
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\CodeFinder.Common.dll
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\CodeFinder.DAL.dll
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\CodeFinder.Model.dll
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\CodeFinder.Common.pdb
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\CodeFinder.DAL.pdb
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\CodeFinder.Model.pdb
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\obj\Debug\CodeFinder.BAL.csprojResolveAssemblyReference.cache
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\obj\Debug\CodeFinder.BAL.dll
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.BAL\obj\Debug\CodeFinder.BAL.pdb

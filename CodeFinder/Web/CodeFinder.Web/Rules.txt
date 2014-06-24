@@ -1,0 +1,10 @@
+﻿Folder Names:
+
+1. static content folder all small letter
+2. dynamic content folder PascalCase
+
+FileNames:
+
+Js - Pascal Case 
+css - lowercase separated with -
+

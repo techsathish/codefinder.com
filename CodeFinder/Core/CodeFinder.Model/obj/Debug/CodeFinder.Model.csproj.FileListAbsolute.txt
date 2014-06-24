@@ -1,0 +1,7 @@
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\CodeFinder.Model.dll
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\CodeFinder.Model.pdb
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\CodeFinder.Common.dll
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\CodeFinder.Common.pdb
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\obj\Debug\CodeFinder.Model.csprojResolveAssemblyReference.cache
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\obj\Debug\CodeFinder.Model.dll
+D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\obj\Debug\CodeFinder.Model.pdb
