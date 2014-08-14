@@ -14,7 +14,7 @@ namespace CodeFinder.Web
 
             //bootstrap
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                       "~/Scripts/bootstrap.js"));
+                       "~/Scripts/bootstrap.js"));           
 
             //angular js
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
@@ -22,7 +22,19 @@ namespace CodeFinder.Web
                        "~/Scripts/angular-route.js",
                        "~/Scripts/angular-resource.js",
                        "~/Scripts/angular-animate.js"
-                       ));        
+                       ));
+
+            //all controller
+            bundles.Add(new ScriptBundle("~/bundles/models").IncludeDirectory("~/app", "*Model.js", true));
+
+            //all services
+            bundles.Add(new ScriptBundle("~/bundles/services").IncludeDirectory("~/app", "*Services.js", true));
+
+            //all controller
+            bundles.Add(new ScriptBundle("~/bundles/controllers").IncludeDirectory("~/app", "*Controller.js", true));
+
+            //all directives
+            bundles.Add(new ScriptBundle("~/bundles/directives").IncludeDirectory("~/app", "*Directives.js", true));
 
             //app boot js
             bundles.Add(new ScriptBundle("~/bundles/boot").Include(
@@ -30,14 +42,15 @@ namespace CodeFinder.Web
                     "~/app/boot/boot.js"
                 ));
 
-            //home page js
-            bundles.Add(new ScriptBundle("~/bundles/homepage").Include(
-                   "~/app/home/controller/HomeController.js"
-               ));
+            ////home page js
+            //bundles.Add(new ScriptBundle("~/bundles/homepage").Include(
+            //       "~/app/home/controller/HomeController.js"
+            //   ));
 
             //css 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                 "~/Content/css/cosmo/bootstrap.css",
+                "~/Content/font-awesome.css",
                 "~/Content/css/cosmo/site.css"
             ));
 

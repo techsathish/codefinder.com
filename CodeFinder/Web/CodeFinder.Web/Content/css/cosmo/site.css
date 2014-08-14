@@ -103,20 +103,24 @@
         font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
+h1 {
+    font-size:30px;
+    margin-top:5px;
+}
 /*bootstrap override end*/
 
 
-input {
-    border-width: 0 !important;
-}
+
 
 .logo {
     margin: 3px 0;
+    cursor: pointer;
 }
 
     .logo label {
         margin: 8px 3px 4px 9px;
         font-size: 20px;
+        cursor: pointer;
     }
 
 .header {
@@ -126,22 +130,49 @@ input {
     .header input {
     }
 
+    .header a, .header a:hover, .header a:visited {
+        color: #fff;
+        cursor: pointer;
+    }
+
 .searchbox {
-    color:#000;
-    margin-top:12px;
-    padding-left:6px;
-    font-size:14px;
+    color: #000;
+    margin-top: 12px;
+    padding-left: 6px;
+    font-size: 14px;
 }
 
 #page {
-    
 }
 
 #content {
-    min-height:500px;
+    min-height: 500px;
 }
 
 footer {
-    border-top:3px solid #000;
-    min-height:100px;
+    border-top: 3px solid #000;
+    min-height: 300px;
+    margin-top:100px;
+    background-color:#7F6E94;
+}
+    footer a, footer a:hover, footer a:visited {
+        color:#fff;
+    }
+
+.footer {
+    margin-top:30px;
+    
+}
+.signup-codefinder {
+    margin-top:15px;
+}
+
+.alert a, .alert a:hover, .alert a:active, .alert a:visited {
+    color:#fff;
+    text-decoration:underline;
+}
+
+/* short class */
+.dib {
+    display:inline-block;
 }

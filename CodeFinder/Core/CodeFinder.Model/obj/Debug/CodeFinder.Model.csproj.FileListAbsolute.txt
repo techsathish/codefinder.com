@@ -5,3 +5,12 @@ D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\CodeF
 D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\obj\Debug\CodeFinder.Model.csprojResolveAssemblyReference.cache
 D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\obj\Debug\CodeFinder.Model.dll
 D:\Stackoverflow\codefinder.com\CodeFinder\Core\CodeFinder.Model\obj\Debug\CodeFinder.Model.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\CodeFinder.Model.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\CodeFinder.Model.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\CodeFinder.Common.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\Newtonsoft.Json.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\CodeFinder.Common.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Model\bin\Debug\Newtonsoft.Json.xml
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Model\obj\Debug\CodeFinder.Model.csprojResolveAssemblyReference.cache
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Model\obj\Debug\CodeFinder.Model.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Model\obj\Debug\CodeFinder.Model.pdb

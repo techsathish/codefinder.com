@@ -8,11 +8,11 @@
     @Styles.Render("~/Content/themes/base/css")
 </head>
 <body>
-    <div id="page">
+      <div id="page">
         <header class="header">
             <!-- Static navbar -->
             <div class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
@@ -21,8 +21,10 @@
                             <span class="icon-bar"></span>
                         </button>
                         <div class="pull-left logo">
-                            <img class="pull-left" src="~/Content/images/logo.png" />
-                            <label class="">Code Finder</label>
+                            <a ng-href="/">
+                                <img class="pull-left" src="~/Content/images/logo.png" />
+                                <label class="">Code Finder</label>
+                            </a>
                         </div>
                     </div>
                     <div class="navbar-collapse collapse">
@@ -37,9 +39,9 @@
 
                         <div class="navbar-nav navbar-right ">
                             <ul class="nav navbar-nav list-unstyled list-inline">
-                                <li><a href="#signup"><span class="">Signup</span></a></li>
-                                <li><a href="#signin"><span class="">Signin</span></a></li>
-                                <li><a href="#help"><span class="">Help</span></a></li>
+                                <li><a ng-href="signup"><span class="">Signup</span></a></li>
+                                <li><a ng-href="/signin"><span class="">Signin</span></a></li>
+                                <li><a ng-href="/help"><span class="">Help</span></a></li>
                             </ul>
                             <div class="searchbox-cont pull-left">
                                 <input class="searchbox" type="text" value="" placeholder="Search content" />
@@ -57,17 +59,17 @@
             @RenderBody()
         </div>
         <footer>
-            <div class="container">
+            <div class="container footer">
                 <ul class="list-unstyled list-inline">
-                    <li><a href="#">tour</a></li>
-                    <li><a href="#">help</a></li>
-                    <li><a href="#">blog</a></li>
-                    <li><a href="#">chat</a></li>
-                    <li><a href="#">legal</a></li>
-                    <li><a href="#">privacy</a></li>
-                    <li><a href="#">contact</a></li>
-                    <li><a href="#">about us</a></li>
-                    <li><a href="#">feedback</a></li>
+                    <li><a ng-href="#">tour</a></li>
+                    <li><a ng-href="#">help</a></li>
+                    <li><a ng-href="#">blog</a></li>
+                    <li><a ng-href="#">chat</a></li>
+                    <li><a ng-href="#">legal</a></li>
+                    <li><a ng-href="#">privacy</a></li>
+                    <li><a ng-href="#">contact</a></li>
+                    <li><a ng-href="#">about us</a></li>
+                    <li><a ng-href="#">feedback</a></li>
                 </ul>
             </div>
         </footer>
@@ -76,8 +78,46 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/directives")
     @Scripts.Render("~/bundles/boot")
-    @Scripts.Render("~/bundles/homepage")
+    @Scripts.Render("~/bundles/models")
+    @Scripts.Render("~/bundles/services")
+   
+    @Scripts.Render("~/bundles/controllers")
 
+    <div id="fb-root"></div>
+
+    @* facebook *@
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1439849022953181',
+                xfbml: true,
+                version: 'v2.0'
+            });
+
+            fbApiInit = true; //init flag
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function fbEnsureInit(callback) {
+            if (!window.fbApiInit) {
+                setTimeout(function () { fbEnsureInit(callback); }, 50);
+            } else {
+                if (callback) {
+                    callback();
+                }
+            }
+        }
+    </script> 
+    
+    
 </body>
 </html>
