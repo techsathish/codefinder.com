@@ -1,0 +1,65 @@
+﻿<h1>Signup</h1>
+
+<div class="row">
+    <div class="col-lg-9">
+
+        <div ng-show="ShowWarning" class="alert alert-dismissable alert-danger">
+            <h4>Warning !</h4>
+
+            <p ng-bind-html="ErrorMsgPanel"></p>
+        </div>
+
+        <button ng-click="faceBookSignUpClick()" type="button" class="btn btn-primary">Signup using Facebook &nbsp;<i class="fa fa-facebook fa-2x"></i></button>
+      
+        <div class="dib" ng-app="directive.g+signin">
+            <google-plus-signin innertext="Signup using Google Plus" clientid="785562233866-mcn381u70fh6qma0tiv203mh29t1i309"></google-plus-signin>
+        </div>      
+
+        <div class="panel panel-success signup-codefinder">
+            <div class="panel-heading">
+                <h3 class="panel-title">SignUp using CodeFinder</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="name" class="col-lg-2 control-label">Name</label>
+                            <div class="col-lg-9">
+                                <input ng-model="name" type="text" class="form-control" id="name" placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-9">
+                                <input ng-model="email" type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-lg-2 control-label">Password</label>
+                            <div class="col-lg-9">
+                                <input ng-model="password" type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-lg-2 control-label">Retype Password</label>
+                            <div class="col-lg-9">
+                                <input ng-model="retypePassword" type="password" class="form-control" id="password" placeholder="Retype Password">
+                            </div>
+                        </div>                        
+                                             
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button ng-click="signupCancelClick()" class="btn btn-default">Cancel</button>
+                                <button type="button" ng-click="signupClick()" class="btn btn-primary">Signup</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
