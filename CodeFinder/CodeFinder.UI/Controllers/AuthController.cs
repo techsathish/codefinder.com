@@ -11,7 +11,7 @@ using CodeFinder.Common;
 
 namespace CodeFinder.Web.Controllers
 {
-    public class AuthController : ApiController
+    public class AuthController : CodeFinderApiController
     {
         [ActionName("Register")]
         [HttpPost]
@@ -104,24 +104,46 @@ namespace CodeFinder.Web.Controllers
         }
 
         [HttpGet]
-        public bool GetUserExist(string emailId)
+        public AjaxResult GetUserExist(string emailId)
         {
+            AjaxResult ajaxResult = new AjaxResult();
+
             MembershipUserCollection membershipUserCollection = Membership.FindUsersByEmail(emailId);
             if (membershipUserCollection != null && membershipUserCollection.Count > 0)
             {
-                return true;
+                ajaxResult.Result = true;
             }
             else
             {
-                return false;
+                ajaxResult.Result = false;
             }
 
+            return ajaxResult;
         }
 
         [HttpGet]
         public bool DeleteUser(string emailId)
         {
             return Membership.DeleteUser(emailId);
+        }
+
+        [HttpGet]
+        public AjaxResult IsAuthenticated() {
+            AjaxResult ajaxResult = new AjaxResult();
+
+            try
+            {
+                ajaxResult.Result = User.Identity.IsAuthenticated;
+                ajaxResult.Status = Status.Success;
+            }
+            catch (Exception ex)
+            {
+                ajaxResult.Message = ex.Message;
+                ajaxResult.Result = false;
+                ajaxResult.Status = Status.Failure;
+            }
+
+            return ajaxResult;
         }
 
         [HttpPost]
@@ -161,12 +183,35 @@ namespace CodeFinder.Web.Controllers
                 }
                 else if (signinDetail.LoginType == LoginType.CodeFinder)
                 {
+                    string validationMessage = "";
+                    bool valdiationPassed = true;
+
+                    if (signinDetail.UserName == "") {
+                        valdiationPassed = false;
+                        validationMessage = "Username Empty";
+                    }
+
+                    if (signinDetail.Password == "") {
+                        valdiationPassed = false;
+                        validationMessage = "Password Empty";
+                    }
+
+                    if (!valdiationPassed) {
+                        ajaxResult.Message = validationMessage;
+                        ajaxResult.Result = false;
+                        ajaxResult.Status = Status.Success;
+
+                        return ajaxResult;
+                    }
+
                     bool isAuthenticated = Membership.ValidateUser(signinDetail.UserName, signinDetail.Password);
 
                     if (isAuthenticated){
                         ajaxResult.Message = "Login Success";
                         ajaxResult.Result = true;
                         ajaxResult.Status = Status.Success;
+
+                        FormsAuthentication.SetAuthCookie(signinDetail.UserName, false);           
 
                         return ajaxResult;
                     }
@@ -196,6 +241,23 @@ namespace CodeFinder.Web.Controllers
                 ajaxResult.Status = Status.Failure;
                 return ajaxResult;
             }
+        }
+
+        [HttpGet]
+        public AjaxResult Logout() {
+            AjaxResult ajaxResult = new AjaxResult();
+
+            try
+            {
+                FormsAuthentication.SignOut();
+                ajaxResult.Result = true;
+            }
+            catch (Exception ex) {
+                ajaxResult.Result = false;
+                ajaxResult.Status = Status.Failure;
+            }
+
+            return ajaxResult;
         }
     }
 }

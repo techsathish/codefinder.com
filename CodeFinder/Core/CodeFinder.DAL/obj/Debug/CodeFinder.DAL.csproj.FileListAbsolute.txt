@@ -18,3 +18,5 @@ C:\CodeFinder.com\CodeFinder\Core\CodeFinder.DAL\bin\Debug\Newtonsoft.Json.xml
 C:\CodeFinder.com\CodeFinder\Core\CodeFinder.DAL\obj\Debug\CodeFinder.DAL.csprojResolveAssemblyReference.cache
 C:\CodeFinder.com\CodeFinder\Core\CodeFinder.DAL\obj\Debug\CodeFinder.DAL.dll
 C:\CodeFinder.com\CodeFinder\Core\CodeFinder.DAL\obj\Debug\CodeFinder.DAL.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.DAL\bin\Debug\System.Web.Http.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.DAL\bin\Debug\System.Web.Http.xml

@@ -3,7 +3,6 @@
 
     //register a user
     serviceInstance.loginUser = function (loginDetails) {
-        debugger;
 
         var request = $http({
             method: "post",
@@ -15,12 +14,11 @@
     };
 
     serviceInstance.IsUserExist = function (emailId) {
-        debugger;
 
         var request = $http({
-            method: "post",
+            method: "get",
             url: serviceUrls.IsUserExist,
-            data: emailId
+            params: { emailId : emailId }
         });
 
         return request;

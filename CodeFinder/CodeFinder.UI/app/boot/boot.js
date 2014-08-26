@@ -24,7 +24,11 @@ app.config(['$routeProvider', function ($routeProvider) {
         })
          .when('/signin', {
              templateUrl: '/app/signin/views/signin.html',
-             controller: 'SignInController'
+             controller: 'SignUpController'
+         })
+         .when('/signout', {
+             templateUrl: '/app/boot/views/signout.html',
+             controller: 'SignoutController'
          })
         .otherwise({
             redirectTo: '/'
@@ -40,12 +44,35 @@ app.factory('serviceUrls', function () {
         loginUser: root + 'auth/login/',
         signupRedirectUrl: "http://localhost.local:40/signup",
         IsUserExist: root + 'auth/GetUserExist',
+        isAuthenticated: root + 'auth/IsAuthenticated',
+        logoutUser: root + 'auth/logout'
     };
 });
+
+
+app.run(['$rootScope', 'AuthService', function ($rootScope, AuthService) {
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+        AuthService.isAuthendicatedPromised().then(function (data) {
+            if (data.Result === true) {
+                $rootScope.isAuthorized = true;
+            }
+            else {
+                $rootScope.isAuthorized = false;
+            }
+        });
+    });
+}]);
 
 //service urls
 app.factory('AppConstant', function () {    
     return {
         signupFacebookRedirectUrl: "http://localhost.local:40/signup/facebook",
     };
+});
+
+app.factory('USER_ROLES', function () {
+    return {
+        User: 'User',
+        Admin: 'Admin'
+    }
 });

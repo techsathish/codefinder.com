@@ -22,3 +22,5 @@ C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\Newtonsoft.Json.xml
 C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\obj\Debug\CodeFinder.BAL.csprojResolveAssemblyReference.cache
 C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\obj\Debug\CodeFinder.BAL.dll
 C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\obj\Debug\CodeFinder.BAL.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\System.Web.Http.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Debug\System.Web.Http.xml

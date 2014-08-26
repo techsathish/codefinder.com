@@ -7,7 +7,7 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/themes/base/css")
 </head>
-<body>
+<body ng-controller="ApplicationController">
     <div id="page">
         <header class="header">
             <!-- Static navbar -->
@@ -38,8 +38,9 @@
 
                         <div class="navbar-nav navbar-right ">
                             <ul class="nav navbar-nav list-unstyled list-inline">
-                                <li><a ng-href="signup"><span class="">Signup</span></a></li>
-                                <li><a ng-href="/signin"><span class="">Signin</span></a></li>
+                                <li ng-show="!isAuthorized()"><a ng-href="signup"><span class="">Signup</span></a></li>
+                                <li ng-show="!isAuthorized()"><a ng-href="/signin"><span class="">Signin</span></a></li>
+                                <li ng-show="isAuthorized()"><a ng-href="/signout"><span class="">Signout</span></a></li>
                                 <li><a ng-href="/help"><span class="">Help</span></a></li>
                             </ul>
                             <div class="searchbox-cont pull-left">
@@ -115,6 +116,10 @@
                 }
             }
         }
+
+        app.run(['$rootScope', function ($rootScope) {
+            $rootScope.isAuthorized = @(User.Identity.IsAuthenticated ? "true" :"false");
+        }]);
     </script>
 
 

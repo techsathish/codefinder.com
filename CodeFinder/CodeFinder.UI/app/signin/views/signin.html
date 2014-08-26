@@ -9,7 +9,7 @@
             <p ng-bind-html="ErrorMsgPanel"></p>
         </div>
 
-        <button ng-click="faceBookSignInClick()" type="button" class="btn btn-primary">SignIn using Facebook &nbsp;<i class="fa fa-facebook fa-2x"></i></button>
+        <button ng-click="faceBookSignUpClick()" type="button" class="btn btn-primary">SignIn using Facebook &nbsp;<i class="fa fa-facebook fa-2x"></i></button>
 
         <div class="dib" ng-app="directive.g+signin">
             <google-plus-signin innertext="SignIn Using Google Plus" clientid="785562233866-mcn381u70fh6qma0tiv203mh29t1i309"></google-plus-signin>
@@ -20,7 +20,7 @@
                 <h3 class="panel-title">SignIn using CodeFinder</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal">
+                <form ng-submit="signInClick()" class="form-horizontal">
                     <fieldset>
                         <div class="form-group">
                             <label for="email" class="col-lg-2 control-label">Email</label>

@@ -1,5 +1,30 @@
 ﻿app.controller('SignUpController', ['$scope', 'SignInService', 'SignupService', 'SignUpModels', 'AppConstant', '$q', '$location', '$sce', '$http', function ($scope, SignInService, SignupService, SignUpModels, AppConstant, $q, $location, $sce, $http) {
     $scope.ShowWarning = false;
+    var locationHref = $location.search(); 
+
+    $scope.signInClick = function () {
+        var SignInModels = {
+            UserName: $scope.email,
+            Password: $scope.password,
+            LoginType: 'codefinder'
+        };
+
+        SignInUser(SignInModels).then(function (signInClickResult) {
+            debugger;
+            if (signInClickResult.Result == true) {
+                if (locationHref.returnUrl) {
+                    $location.path(locationHref.returnUrl);
+                }
+                else {
+                    $location.path("/");
+                }
+            }
+            else {
+                $scope.ShowWarning = true;
+                $scope.ErrorMsgPanel = $sce.trustAsHtml(signInClickResult.Message);
+            }
+        });
+    }
 
     $scope.signupClick = function () {
         SignUpModels.UserId = 0;
@@ -13,12 +38,6 @@
     };
 
     function SignInUser(SignInModels) {
-        var result = DoSignInUser(SignInModels);
-
-        console.log(result);
-    }
-
-    function DoSignInUser(SignInModels) {
         var defered = $q.defer();
 
         SignInService.loginUser(SignInModels)
@@ -30,7 +49,7 @@
           });
 
         return defered.promise;
-    }   
+    }
 
     function signupCallback(result) {
         if (result && result.Status) {
@@ -43,7 +62,7 @@
         }
         else {
             ValidateHelpSignup(result.data);
-        }    
+        }
     }
 
     function ValidateHelpSignup(data) {
@@ -98,34 +117,79 @@
         return defered.promise;
     }
 
+    function IsUserExist(email) {
+
+        var defered = $q.defer();
+
+        SignInService.IsUserExist(email)
+        .success(function (data, status, headers) {
+            var result = {
+                'status': 'success',
+                data: data
+            };
+
+            defered.resolve(result);
+        })
+      .error(function (data, status, headers, config) {
+          var result = {
+              'status': 'failure',
+              data: data
+          };
+
+          defered.resolve(result);
+      });
+
+        return defered.promise;
+
+
+    }
+
     var facebookAccessToken, googleAccessToken;
 
     $scope.faceBookSignUpClick = function () {
         //var defered = $q.defer();
 
-        FB.getLoginStatus(function (response) {            
+        FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
                 facebookAccessToken = response.authResponse.accessToken;
 
                 GetFacebookData().then(function (result) {
                     if (result.email) {
-                        if (SignInService.IsUserExist(result.email)) {
-                            SignInUser({
-                                UserName: result.email,
-                                AccessToken: FB.getAuthResponse()['accessToken'],
-                                LoginType: 'Facebook'
-                            });
-                        }
-                        else {
-                            SignUpModels.UserId = 0;
-                            SignUpModels.FirstName = result.name;
-                            SignUpModels.EmailId = result.email;
-                            SignUpModels.password = "";
-                            SignUpModels.RetypePassword = "";
-                            SignUpModels.SignUpFrom = "Facebook";
+                        //debugger;
+                        IsUserExist(result.email).then(function (userExistResult) {
+                            //debugger;
+                            if(userExistResult.status == "success" && userExistResult.data.Result == true){
+                                SignInUser({
+                                    UserName: result.email,
+                                    AccessToken: FB.getAuthResponse()['accessToken'],
+                                    LoginType: 'Facebook'
+                                }).then(function (SignInUserResult) {
+                                    //debugger;                                  
+                                    if (SignInUserResult.Result == true) {
+                                        if (locationHref.returnUrl) {
+                                            $location.path(locationHref.returnUrl);
+                                        }
+                                        else {
+                                            $location.path("/");
+                                        }
+                                    }
+                                    else {
+                                        $scope.ShowWarning = true;
+                                        $scope.ErrorMsgPanel = $sce.trustAsHtml(signInClickResult.Message);
+                                    }
+                                });
+                            }                           
+                            else {
+                                SignUpModels.UserId = 0;
+                                SignUpModels.FirstName = result.name;
+                                SignUpModels.EmailId = result.email;
+                                SignUpModels.password = "";
+                                SignUpModels.RetypePassword = "";
+                                SignUpModels.SignUpFrom = "Facebook";
 
-                            SignUpUser(SignUpModels).then(signupCallback);
-                        }
+                                SignUpUser(SignUpModels).then(signupCallback);
+                            }
+                        });                        
                     }
                     else {
                         $scope.ErrorMsgPanel = "Your email address is required for Registration.";
@@ -172,7 +236,7 @@
     if (location == "/signup/facebook") {
         fbEnsureInit(function () {
             $scope.faceBookSignUpClick();
-        });        
+        });
     }
 
 
@@ -194,6 +258,6 @@
 
     $scope.$on('event:google-plus-signin-failure', function (event, authResult) {
         // User has not authorized the G+ App!
-       console.log(authResult);
+        console.log(authResult);
     });
 }]);

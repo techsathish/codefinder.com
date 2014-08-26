@@ -9,3 +9,8 @@ C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Common\bin\Debug\Newtonsoft.Json.dl
 C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Common\bin\Debug\Newtonsoft.Json.xml
 C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Common\obj\Debug\CodeFinder.Common.dll
 C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Common\obj\Debug\CodeFinder.Common.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Common\bin\Debug\System.Web.Http.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Common\bin\Debug\System.Web.Mvc.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Common\bin\Debug\System.Web.Http.xml
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Common\bin\Debug\System.Web.Mvc.xml
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.Common\obj\Debug\CodeFinder.Common.csprojResolveAssemblyReference.cache
