@@ -25,12 +25,49 @@ namespace CodeFinder.UI
                 constraints: new { id = @"^\d+$" } // Only integers 
             );
 
+            //USER STORIES
+
+            // Controllers with Actions
+            // To handle routes like `/api/userstories/controllername`
+            config.Routes.MapHttpRoute(
+                name: "ControllerOnlyForUserStories",
+                routeTemplate: "api/userstories/{controller}"
+            );
+
+            // Controllers with Actions in UserStories
+            // To handle routes like `/api/userstories/controllername/id`
+            config.Routes.MapHttpRoute(
+                name: "ControllerAndIdForUserStories",
+                routeTemplate: "api/userstories/{controller}/{id}",
+                defaults: null,
+                constraints: new { id = @"^\d+$" } // Only integers 
+            );
+
+            // Controllers with Actions in UserStories
+            // To handle routes like `/api/userstories/controllername/actionname`
+            config.Routes.MapHttpRoute(
+                name: "ControllerAndActionForUserStories",
+                routeTemplate: "api/userstories/{controller}/{action}"
+            );
+
+
+
+            // Controllers with Actions in UserStories
+            // To handle routes like `/api/userstories/controllername/actionname/id`
+            config.Routes.MapHttpRoute(
+                name: "ControllerAndActionIdForUserStories",
+                routeTemplate: "api/userstories/{controller}/{action}/{id}",
+                defaults: null,
+                constraints: new { id = @"^\d+$" } // Only integers 
+            );
+
             // Controllers with Actions
             // To handle routes like `/api/VTRouting/route`
             config.Routes.MapHttpRoute(
                 name: "ControllerAndAction",
                 routeTemplate: "api/{controller}/{action}"
             );
+
         }
     }
 }

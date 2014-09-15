@@ -1,0 +1,15 @@
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\CodeFinder.BAL.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\CodeFinder.BAL.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\CodeFinder.Common.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\CodeFinder.DAL.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\CodeFinder.Model.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\System.Web.Http.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\Newtonsoft.Json.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\CodeFinder.DAL.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\CodeFinder.Common.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\CodeFinder.Model.pdb
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\System.Web.Http.xml
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\bin\Release\Newtonsoft.Json.xml
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\obj\Release\CodeFinder.BAL.csprojResolveAssemblyReference.cache
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\obj\Release\CodeFinder.BAL.dll
+C:\CodeFinder.com\CodeFinder\Core\CodeFinder.BAL\obj\Release\CodeFinder.BAL.pdb

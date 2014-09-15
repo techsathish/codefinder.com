@@ -23,7 +23,7 @@
                         <div class="pull-left logo">
                             <a ng-href="/">
                                 <img class="pull-left" src="~/Content/images/logo.png" />
-                                <label class="">Code Finder</label>
+                                <label class="">Care Developer</label>
                             </a>
                         </div>
                     </div>
@@ -38,9 +38,21 @@
 
                         <div class="navbar-nav navbar-right ">
                             <ul class="nav navbar-nav list-unstyled list-inline">
-                                <li ng-show="!isAuthorized()"><a ng-href="signup"><span class="">Signup</span></a></li>
-                                <li ng-show="!isAuthorized()"><a ng-href="/signin"><span class="">Signin</span></a></li>
-                                <li ng-show="isAuthorized()"><a ng-href="/signout"><span class="">Signout</span></a></li>
+                                <li ng-show="!childUpdate.isAuthenticated"><a ng-href="signup"><span class="">Signup</span></a></li>
+                                <li ng-show="!childUpdate.isAuthenticated"><a ng-href="/signin"><span class="">Signin</span></a></li>
+                                <li ng-show="childUpdate.isAuthenticated"><a ng-href="/signout"><span class="">Signout</span></a></li>
+                                <li ng-show="childUpdate.isAuthenticated">
+                                    <span class="dropdown" on-toggle="toggled(open)">
+                                        <a href class="dropdown-toggle">
+                                            My Profile
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li ng-repeat="choice in childUpdate.MyProfileOptions">
+                                                <a href>{{choice}}</a>
+                                            </li>
+                                        </ul>
+                                    </span>
+                                </li>
                                 <li><a ng-href="/help"><span class="">Help</span></a></li>
                             </ul>
                             <div class="searchbox-cont pull-left">
@@ -56,6 +68,11 @@
         </header>
 
         <div id="content" class="container">
+
+            <div class="custom-alert">
+                <alert ng-repeat="alert in childUpdate.MessageIndicator" type="{{alert.type}}" close="childUpdate.closeMessageIndicator($index)">{{alert.msg}}</alert>
+            </div>
+
             @RenderBody()
         </div>
         <footer>
@@ -75,11 +92,17 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
     @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angular-ui")
+    @Scripts.Render("~/bundles/restangular")
+
     @Scripts.Render("~/bundles/directives")
+
+    @Scripts.Render("~/bundles/angular-reusable")
     @Scripts.Render("~/bundles/boot")
+
+    @Scripts.Render("~/bundles/appdirectives")
     @Scripts.Render("~/bundles/models")
     @Scripts.Render("~/bundles/services")
 

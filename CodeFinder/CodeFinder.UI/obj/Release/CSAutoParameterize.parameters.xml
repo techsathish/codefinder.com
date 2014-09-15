@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="CareDeveloperConnection-Web.config Connection String" description="CareDeveloperConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=localhost;Initial Catalog=DEV_Caredeveloper;Persist Security Info=True;User ID=vsathish;Password=Passmeok1!" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\CodeFinder\.com\\CodeFinder\\CodeFinder\.UI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CareDeveloperConnection']/@connectionString" />
+  </parameter>
+</parameters>

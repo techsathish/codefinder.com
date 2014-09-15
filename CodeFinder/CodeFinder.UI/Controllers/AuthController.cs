@@ -15,6 +15,7 @@ namespace CodeFinder.Web.Controllers
     {
         [ActionName("Register")]
         [HttpPost]
+        [AllowAnonymous]
         public AjaxResult PostRegister(UserSignUpForm userSignUpForm)
         {
             AjaxResult result = new AjaxResult();
@@ -22,7 +23,7 @@ namespace CodeFinder.Web.Controllers
             try
             {
                 //first name valiadtion
-                if (userSignUpForm.FirstName == "")
+                if (userSignUpForm.FullName == "")
                 {
                     result.Message = "name empty";
                     result.Status = Model.Status.Failure;
@@ -75,7 +76,7 @@ namespace CodeFinder.Web.Controllers
                 if (membershipCreateStatus == MembershipCreateStatus.Success)
                 {
                     dynamic profile = ProfileBase.Create(userSignUpForm.EmailId);
-                    profile.FirstName = userSignUpForm.FirstName;
+                    profile.FullName = userSignUpForm.FullName;
                     profile.SignUpFrom = userSignUpForm.SignUpFrom;
                     profile.Save();
                     result.Status = Model.Status.Success;
@@ -208,7 +209,14 @@ namespace CodeFinder.Web.Controllers
 
                     if (isAuthenticated){
                         ajaxResult.Message = "Login Success";
-                        ajaxResult.Result = true;
+
+                        ProfileBase profile = ProfileBase.Create(signinDetail.UserName);
+
+                        ajaxResult.Result = new UserProfile{
+                             Email = signinDetail.UserName,
+                             FullName = (string)profile.GetPropertyValue("FullName")
+                        };
+
                         ajaxResult.Status = Status.Success;
 
                         FormsAuthentication.SetAuthCookie(signinDetail.UserName, false);           

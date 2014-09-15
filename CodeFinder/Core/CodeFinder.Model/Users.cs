@@ -10,7 +10,7 @@ namespace CodeFinder.Model
     public class UserSignUpForm
     {
         public int UserId { get; set; }
-        public string FirstName { get; set; }
+        public string FullName { get; set; }
         public string EmailId { get; set; }
         public string Password { get; set; }
         public string RetypePassword { get; set; }
@@ -44,5 +44,19 @@ namespace CodeFinder.Model
     {
         public string Id { get; set; }
         public FacebookTokenResultError Error { get; set; }
+    }
+
+    public class UserSearch {
+        public string SearchStringEmail { get; set; }
+    }
+
+    public class UserDetailsSearch {
+        public string Email { get; set; }
+    }
+
+    public class UserProfile {
+        public string Email { get; set; }
+        public string FullName { get; set; }
+        public Guid UserId { get; set; }
     }
 }

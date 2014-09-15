@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html ng-app="codefinder">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/themes/base/css")
+</head>
+<body ng-controller="ApplicationController">
+    <div id="page">
+        <header class="header">
+            <!-- Static navbar -->
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="pull-left logo">
+                            <a ng-href="/">
+                                <img class="pull-left" src="~/Content/images/logo.png" />
+                                <label class="">Code Finder</label>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav"></ul>
+
+                        @*<ul class="nav navbar-nav navbar-right">
+                                <li class="active"><a href="./">Default</a></li>
+                                <li><a href="../navbar-static-top/">Static top</a></li>
+                                <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+                            </ul>*@
+
+                        <div class="navbar-nav navbar-right ">
+                            <ul class="nav navbar-nav list-unstyled list-inline">
+                                <li ng-show="!childUpdate.isAuthenticated"><a ng-href="signup"><span class="">Signup</span></a></li>
+                                <li ng-show="!childUpdate.isAuthenticated"><a ng-href="/signin"><span class="">Signin</span></a></li>
+                                <li ng-show="childUpdate.isAuthenticated"><a ng-href="/signout"><span class="">Signout</span></a></li>
+                                <li ng-show="childUpdate.isAuthenticated">
+                                    <span class="dropdown" on-toggle="toggled(open)">
+                                        <a href class="dropdown-toggle">
+                                            My Profile
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li ng-repeat="choice in childUpdate.MyProfileOptions">
+                                                <a href>{{choice}}</a>
+                                            </li>
+                                        </ul>
+                                    </span>
+                                </li>
+                                <li><a ng-href="/help"><span class="">Help</span></a></li>
+                            </ul>
+                            <div class="searchbox-cont pull-left">
+                                <input class="searchbox" type="text" value="" placeholder="Search content" />
+                                <span class="glyphicon glyphicon-search"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!--/.container-fluid -->
+            </div>
+        </header>
+
+        <div id="content" class="container">
+
+            <div class="custom-alert">
+                <alert ng-repeat="alert in childUpdate.MessageIndicator" type="{{alert.type}}" close="childUpdate.closeMessageIndicator($index)">{{alert.msg}}</alert>
+            </div>
+
+            @RenderBody()
+        </div>
+        <footer>
+            <div class="container footer">
+                <ul class="list-unstyled list-inline">
+                    <li><a ng-href="#">tour</a></li>
+                    <li><a ng-href="#">help</a></li>
+                    <li><a ng-href="#">blog</a></li>
+                    <li><a ng-href="#">chat</a></li>
+                    <li><a ng-href="#">legal</a></li>
+                    <li><a ng-href="#">privacy</a></li>
+                    <li><a ng-href="#">contact</a></li>
+                    <li><a ng-href="#">about us</a></li>
+                    <li><a ng-href="#">feedback</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angular-ui")
+    @Scripts.Render("~/bundles/restangular")
+
+    @Scripts.Render("~/bundles/directives")
+
+    @Scripts.Render("~/bundles/angular-reusable")
+    @Scripts.Render("~/bundles/boot")
+
+    @Scripts.Render("~/bundles/appdirectives")
+    @Scripts.Render("~/bundles/models")
+    @Scripts.Render("~/bundles/services")
+
+    @Scripts.Render("~/bundles/controllers")
+
+    <div id="fb-root"></div>
+
+    @* facebook *@
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1439849022953181',
+                xfbml: true,
+                version: 'v2.0'
+            });
+
+            fbApiInit = true; //init flag
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function fbEnsureInit(callback) {
+            if (!window.fbApiInit) {
+                setTimeout(function () { fbEnsureInit(callback); }, 50);
+            } else {
+                if (callback) {
+                    callback();
+                }
+            }
+        }
+
+        app.run(['$rootScope', function ($rootScope) {
+            $rootScope.isAuthorized = @(User.Identity.IsAuthenticated ? "true" :"false");
+        }]);
+    </script>
+
+
+</body>
+</html>

@@ -12,9 +12,20 @@ namespace CodeFinder.UI
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-2.1.1.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
+            "~/Scripts/angular-ui/ui-bootstrap-tpls.js"
+            ));
+
+            bundles.Add(new ScriptBundle("~/bundles/restangular").Include(
+                "~/Scripts/lodash.js",
+                "~/Scripts/restangular.js"
+            ));
+
+
+
             //bootstrap
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                       "~/Scripts/bootstrap.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            //           "~/Scripts/bootstrap.js"));
 
             //angular js
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
@@ -23,6 +34,11 @@ namespace CodeFinder.UI
                        "~/Scripts/angular-resource.js",
                        "~/Scripts/angular-animate.js"
                        ));
+
+            //reusable modules of angular
+            bundles.Add(new ScriptBundle("~/bundles/angular-reusable").Include(
+                "~/Scripts/autocomplete.js"
+                ));
 
             //all controller
             bundles.Add(new ScriptBundle("~/bundles/models").IncludeDirectory("~/app", "*Model.js", true));
@@ -35,6 +51,10 @@ namespace CodeFinder.UI
 
             //all directives
             bundles.Add(new ScriptBundle("~/bundles/directives").IncludeDirectory("~/app", "*Directives.js", true));
+
+            //directives using app varaible
+            bundles.Add(new ScriptBundle("~/bundles/appdirectives").IncludeDirectory("~/app", "*DirectivesInApp.js", true));
+
 
             //app boot js
             bundles.Add(new ScriptBundle("~/bundles/boot").Include(
@@ -54,6 +74,7 @@ namespace CodeFinder.UI
                 "~/Content/css/cosmo/site.css"
             ));
 
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

@@ -39,16 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CodeFinder.DAL\CodeFinder.DAL.csproj">
+      <Project>{04412e28-61c2-42f4-ae82-93780dc9e042}</Project>
+      <Name>CodeFinder.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CodeFinder.Common\CodeFinder.Common.csproj">
       <Project>{aca85611-08d1-43d2-9eb7-33e97ffcb4be}</Project>
       <Name>CodeFinder.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CodeFinder.DAL\CodeFinder.DAL.csproj">
-      <Project>{a73b152a-2eb1-4853-a1c9-4a9fccbf98d7}</Project>
-      <Name>CodeFinder.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\CodeFinder.Model\CodeFinder.Model.csproj">
       <Project>{89cffce5-7356-430d-99df-dc4417983b0d}</Project>

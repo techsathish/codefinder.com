@@ -1,0 +1,92 @@
+﻿<div class="" id="create-new-project">
+    <!-- Create new project -->
+    <div class="page-header">
+        <h1>Create New Project</h1>
+    </div>
+
+    <div class="row margin-t40">
+        <form onsubmit="event.preventDefault();CreateProject()" name="CreateProjectForm" novalidate class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label for="ProjectName" class="col-lg-2 control-label">Project Name</label>
+                    <div class="col-lg-9">
+                        <div class="error error-msg"
+                             ng-show="(createProject_form_submitted && CreateProjectForm.ProjectName.$invalid) || (CreateProjectForm.ProjectName.$dirty && CreateProjectForm.ProjectName.$invalid && (!CreateProjectForm.ProjectName.$focused)) ">
+                            <small class="error "
+                                   ng-show="CreateProjectForm.ProjectName.$error.required">
+                                Project name is required.
+                            </small>
+                            <small class="error"
+                                   ng-show="CreateProjectForm.ProjectName.$error.minlength">
+                                Project name is required to be at
+                                least 3 characters
+                            </small>
+                            <small class="error" ng-show="CreateProjectForm.ProjectName.$error.maxlength">
+                                Project name cannot be longer than
+                                200 characters
+                            </small>
+                        </div>
+
+                        <input ng-focus required ng-minlength="3" ng-maxlength="200" value="" name="ProjectName" ng-model="ProjectName" type="text" class="form-control" id="ProjectName" placeholder="Project Name">                      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Member" class="col-lg-2 control-label">Add Members</label>
+
+                    <div class="col-lg-9 error-msg" ng-show="EmailFieldError">
+                        {{EmailFieldError}}
+                    </div>
+
+                    <div class="col-lg-8">
+                        <autocomplete attrinputclass="form-control" ng-model="MemberName" data="memberNameSuggested" on-type="changeMemberName" attrplaceholder="enter email address..."></autocomplete>
+                    </div>
+                    <div class="col-lg-1">
+                        <button ng-click="AddMembers()" type="button" class="btn btn-info">Add</button>
+                    </div>
+                </div>
+
+                <div id="AddedMemebers" class="form-group">
+
+                    <label for="Member" class="col-lg-2 control-label">Added Members</label>
+
+                    <div class="col-lg-9">
+                        <div class="added-members">
+                            <table class="table table-striped table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th>Email ID</th>
+                                        <th>Name</th>
+                                        <th>Can Edit Content ?</th>
+                                        <th>Can Accept Requirement ?</th>
+                                        <th ng-show="isProjectEdit">User Status</th>
+                                        <th ng-show="!isProjectEdit">Delete User</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="user in AddedUsers">
+                                        <td ng-model="user.emailId">{{user.emailId}}</td>
+                                        <td ng-model="user.name">{{user.name}}</td>
+                                        <td class="text-center"><input type="checkbox" class="" ng-model="user.canEditContent" /></td>
+                                        <td class="text-center"><input type="checkbox" class="" ng-model="user.canAcceptRequirement" /></td>
+                                        <td ng-show="isProjectEdit" class="text-center"><input type="checkbox" class="" ng-model="user.userStatus" />{{user.userStatus}}</td>
+                                        <td ng-show="!isProjectEdit" ng-model="user.canEditContent"><button ng-click="DeleteMember(user.$$hashKey)" type="button" class="btn btn-danger">Delete</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button ng-click="CreateProject()" type="button" class="btn btn-primary">Create Project</button>
+                        <a href="/" class="btn btn-default">Cancel</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

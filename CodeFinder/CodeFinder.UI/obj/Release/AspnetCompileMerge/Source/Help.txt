@@ -1,0 +1,55 @@
+﻿>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+angular js login help code
+
+https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+service Instance | serviceinstance
+-------------------------------------
+app.factory('AuthService', ['$http', 'serviceUrls', '$q', function ($http, serviceUrls, $q) {
+    var serviceInstance = {};
+
+    //register a user
+    serviceInstance.usernameSuggesion = function (data) {
+
+        var request = $http({
+            method: "post",
+            url: serviceUrls.usernameSuggesion,
+            data: data
+        });
+
+        return request;
+    };
+
+    serviceInstance.usernameSuggesionPromised = function () {
+        var defered = $q.defer();
+
+        this.usernameSuggesionPromised()
+        .success(function (data, status, headers) {
+            defered.resolve(data, status, headers);
+        })
+        .error(function (data, status, headers, config) {
+            defered.resolve(data, status, headers, config);
+        });
+
+        return defered.promise;
+    };
+
+    return serviceInstance;
+}]);
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Stored Procedure BEST PRACTISE
+http://www.codeproject.com/Articles/35665/Top-steps-to-optimize-data-access-in-SQL-Serv
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+mssql datatype to c# datatype
+
+http://forums.asp.net/t/1019137.aspx?data+type+uniqueidentifier+is+it+a+string+data+type+in+C+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
